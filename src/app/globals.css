@@ -41,6 +41,7 @@
 
   /* COLORS IN PROJECT */
   --violet: hsl(274deg, 82%, 60%);
+  --lViolet: hsla(274, 82%, 60%, 0.199);
 }
 
 @media (prefers-color-scheme: dark) {

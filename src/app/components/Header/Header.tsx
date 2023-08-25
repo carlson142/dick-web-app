@@ -16,6 +16,8 @@ const Container = styled.nav`
   align-items: center;
 
   margin-bottom: 3rem;
+
+  /* background-color: green; */
 `;
 
 const LogoContainer = styled.div``;

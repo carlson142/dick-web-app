@@ -1,15 +1,18 @@
-import { useInputStore } from "@/app/zustand/store";
-import React from "react";
+import { useGetData, useInputStore } from "@/app/zustand/store";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import { Search } from "@styled-icons/bootstrap";
 
 const Container = styled.div`
   position: relative;
+  width: 55%;
+  /* background-color: pink; */
 `;
 
 const Input = styled.input`
-  width: 65rem;
+  /* width: 65rem; */
+  width: 100%;
   height: 5rem;
 
   border: 2px solid white;
@@ -47,6 +50,9 @@ const CustomInput: React.FC<CustomInputProps> = () => {
   const inputValue = useInputStore((state) => state.input);
   const setInput = useInputStore((state) => state.setInput);
 
+  const getData = useGetData((state) => state.getData);
+  // const data = useGetData((state) => state.data);
+
   return (
     <Container>
       <Input
@@ -56,7 +62,7 @@ const CustomInput: React.FC<CustomInputProps> = () => {
       />
 
       <IconContainer>
-        <IconSearch />
+        <IconSearch onClick={() => getData(inputValue)} />
       </IconContainer>
     </Container>
   );
