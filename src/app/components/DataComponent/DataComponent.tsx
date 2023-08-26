@@ -152,25 +152,35 @@ const DataComponent: React.FC<DataComponentProps> = ({ data }) => {
 
               <SubContainer>
                 {el.synonyms.length > 0 && (
-                  <SmallText style={{ color: "hsl(0deg, 0%, 46%)" }}>
-                    Sinonyms: {el.synonyms.join(", ")}
-                  </SmallText>
+                  <SubContainer style={{ display: "flex" }}>
+                    <SmallText style={{ color: "hsl(0deg, 0%, 46%)" }}>
+                      Sinonyms:
+                    </SmallText>
+
+                    <SmallText style={{ color: "var(--violet)" }}>
+                      {el.synonyms.join(", ")}
+                    </SmallText>
+                  </SubContainer>
                 )}
               </SubContainer>
 
               <SubContainer>
                 {el.antonyms.length > 0 && (
-                  <SmallText style={{ color: "hsl(0deg, 0%, 46%)" }}>
-                    Antonyms: {el.antonyms.join(", ")}
-                  </SmallText>
+                  <SubContainer style={{ display: "flex" }}>
+                    <SmallText style={{ color: "hsl(0deg, 0%, 46%)" }}>
+                      Antonyms:
+                    </SmallText>
+
+                    <SmallText style={{ color: "var(--violet)" }}>
+                      {el.antonyms.join(", ")}
+                    </SmallText>
+                  </SubContainer>
                 )}
               </SubContainer>
             </SubContainer>
           );
         })}
       </SubContainer>
-
-      {/* Synonyms */}
     </Container>
   );
 };
