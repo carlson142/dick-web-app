@@ -23,9 +23,9 @@ const Input = styled.input`
     border: 2px solid var(--violet);
   }
 
-  padding: 0 2rem;
+  padding: 3rem;
   font-family: inherit;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
 `;
 
 const IconContainer = styled.div`

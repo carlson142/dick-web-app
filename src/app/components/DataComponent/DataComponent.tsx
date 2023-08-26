@@ -2,6 +2,7 @@ import { IData } from "@/app/data";
 import React from "react";
 import styled from "styled-components";
 import PlayButton from "../Buttons/PlayButton";
+import Link from "next/link";
 
 const Container = styled.div`
   width: 55%;
@@ -89,6 +90,12 @@ const Separator = styled.div`
   background-color: lightgray;
 `;
 
+const CustomLink = styled(Link)`
+  font-size: 1.6rem;
+  color: var(--violet);
+  font-weight: bold;
+`;
+
 type DataComponentProps = {
   data: IData[];
 };
@@ -121,7 +128,7 @@ const DataComponent: React.FC<DataComponentProps> = ({ data }) => {
       <SubContainer>
         {meanings.map((el, i) => {
           return (
-            <SubContainer>
+            <SubContainer key={i}>
               <SmallText style={{ fontWeight: "bold", fontStyle: "italic" }}>
                 {el.partOfSpeech}
                 <Separator />
@@ -130,9 +137,9 @@ const DataComponent: React.FC<DataComponentProps> = ({ data }) => {
               <SmallText>Meaning:</SmallText>
 
               <List>
-                {el.definitions.map((el) => {
+                {el.definitions.map((el, i) => {
                   return (
-                    <>
+                    <React.Fragment key={i}>
                       <Element>{el.definition}</Element>
                       <ExampleText>{el.example}</ExampleText>
                       {el.synonyms.length > 0 && (
@@ -145,7 +152,7 @@ const DataComponent: React.FC<DataComponentProps> = ({ data }) => {
                           Sinonyms: {el.synonyms.join(", ")}
                         </SmallText>
                       )}
-                    </>
+                    </React.Fragment>
                   );
                 })}
               </List>
@@ -177,6 +184,20 @@ const DataComponent: React.FC<DataComponentProps> = ({ data }) => {
                   </SubContainer>
                 )}
               </SubContainer>
+            </SubContainer>
+          );
+        })}
+      </SubContainer>
+
+      {/* SOURCE */}
+      <SubContainer>
+        <SmallText style={{ fontWeight: "bold" }}>Source:</SmallText>
+        {info.sourceUrls.map((el, i) => {
+          return (
+            <SubContainer>
+              <CustomLink key={i} href={`${el}`} target="_blank">
+                {el}
+              </CustomLink>
             </SubContainer>
           );
         })}
