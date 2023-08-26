@@ -1,4 +1,4 @@
-import { IData } from "@/app/data";
+import { IData, IError } from "@/app/data";
 import React from "react";
 import styled from "styled-components";
 import PlayButton from "../Buttons/PlayButton";
@@ -104,12 +104,13 @@ const DataComponent: React.FC<DataComponentProps> = ({ data }) => {
   // ALL INFORMATION FROM API
   const info = data[0];
 
-  console.log(info);
+  // console.log(info);
+  // console.log(data);
 
   // ZNACHENNYA
   const [...meanings] = info.meanings;
 
-  console.log(meanings);
+  // console.log(meanings);
 
   return (
     <Container>

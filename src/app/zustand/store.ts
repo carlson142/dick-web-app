@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { getData } from "../helpers/helpers";
-import { IData } from "../data";
+import { IData, IError } from "../data";
 
 // SEARCH STRING
 type useInputProps = {
@@ -16,13 +16,22 @@ export const useInputStore = create<useInputProps>((set) => ({
 // GET DATA FROM API
 type useGetDataProps = {
   data: IData[];
+  error: IError | null;
+  errorState: boolean;
   getData: (search: string) => Promise<void>;
 };
 
 export const useGetData = create<useGetDataProps>((set) => ({
   data: [],
+  error: null,
+  errorState: false,
   getData: async (search) => {
     const data = await getData(search);
-    set({ data });
+
+    if (!data.ok) {
+      set({ error: data, errorState: true });
+    }
+
+    set({ data: data });
   },
 }));

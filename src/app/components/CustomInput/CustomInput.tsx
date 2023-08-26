@@ -25,7 +25,7 @@ const Input = styled.input`
 
   padding: 3rem;
   font-family: inherit;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
 `;
 
 const IconContainer = styled.div`

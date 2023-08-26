@@ -32,3 +32,9 @@ interface Phonetic {
   sourceUrl: string;
   license: License;
 }
+
+export interface IError {
+  message: string;
+  resolution: string;
+  title: string;
+}
