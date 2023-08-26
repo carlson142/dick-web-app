@@ -51,7 +51,12 @@ const CustomInput: React.FC<CustomInputProps> = () => {
   const setInput = useInputStore((state) => state.setInput);
 
   const getData = useGetData((state) => state.getData);
-  // const data = useGetData((state) => state.data);
+
+  const handleKeyPressed = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      getData(inputValue);
+    }
+  };
 
   return (
     <Container>
@@ -59,6 +64,7 @@ const CustomInput: React.FC<CustomInputProps> = () => {
         placeholder="Search for any word..."
         value={inputValue}
         onChange={(e) => setInput(e.target.value)}
+        onKeyDown={handleKeyPressed}
       />
 
       <IconContainer>

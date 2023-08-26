@@ -194,8 +194,8 @@ const DataComponent: React.FC<DataComponentProps> = ({ data }) => {
         <SmallText style={{ fontWeight: "bold" }}>Source:</SmallText>
         {info.sourceUrls.map((el, i) => {
           return (
-            <SubContainer>
-              <CustomLink key={i} href={`${el}`} target="_blank">
+            <SubContainer key={i}>
+              <CustomLink href={`${el}`} target="_blank">
                 {el}
               </CustomLink>
             </SubContainer>
