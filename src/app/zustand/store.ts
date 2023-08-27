@@ -25,8 +25,11 @@ export const useGetData = create<useGetDataProps>((set) => ({
   data: [],
   error: null,
   errorState: false,
+
   getData: async (search) => {
     const data = await getData(search);
+
+    set({ errorState: false });
 
     if (!data.ok) {
       set({ error: data, errorState: true });

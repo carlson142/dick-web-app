@@ -20,7 +20,7 @@ export default function Home() {
       <Header />
       <CustomInput />
       {data.length > 0 && <DataComponent data={data} />}
-      {errorState === true && <WordNotFound errorData={error} />}
+      {errorState === true ? <WordNotFound errorData={error} /> : null}
     </main>
   );
 }
