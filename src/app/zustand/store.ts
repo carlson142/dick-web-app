@@ -27,14 +27,15 @@ export const useGetData = create<useGetDataProps>((set) => ({
   errorState: false,
 
   getData: async (search) => {
+    set({ errorState: false });
     const data = await getData(search);
 
-    set({ errorState: false });
-
-    if (!data.ok) {
+    // NOTE: Така перевірка, бо з серверу вертається або повноцінна відповідь, або відповідь з помилкою,
+    // в якій є поле "title"
+    if (data.title) {
       set({ error: data, errorState: true });
     }
 
-    set({ data: data });
+    set({ data });
   },
 }));

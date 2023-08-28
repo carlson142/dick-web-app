@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { PlayFill } from "@styled-icons/bootstrap";
+import { useGetData } from "@/app/zustand/store";
+import { IData } from "@/app/data";
+
+import ReactPlayer from "react-player";
 
 const IconPlay = styled(PlayFill)`
   height: 4rem;
@@ -35,8 +39,27 @@ const Container = styled.button`
 type PlayButtonProps = {};
 
 const PlayButton: React.FC<PlayButtonProps> = () => {
+  const data: IData[] = useGetData((state) => state.data);
+  const soundUrl = data
+    .map((el) => el.phonetics.map((el) => el.audio))
+    .map((el) => el.join(""))
+    .filter((el) => el.length > 0)[0];
+
+  // console.log(ReactPlayer.canPlay(soundUrl));
+  // console.log(soundUrl);
+  // console.log(data[0].phonetics.map((el) => el.audio).pop());
+  console.log(
+    data
+      .map((el) => el.phonetics.map((el) => el.audio))
+      .map((el) => el[0])
+      .filter((el) => el.length > 0)
+  );
+
+  // console.log(data);
+
   return (
     <Container>
+      <ReactPlayer url={soundUrl} controls={true} height={20} width={20} />
       <IconPlay />
     </Container>
   );

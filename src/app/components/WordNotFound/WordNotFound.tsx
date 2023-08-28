@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { BugFill } from "@styled-icons/bootstrap";
+import { useGetData } from "@/app/zustand/store";
 
 const Container = styled.div`
   width: 65%;
@@ -43,10 +44,12 @@ const ThinText = styled.h5`
 `;
 
 type WordNotFoundProps = {
-  errorData: IError | null;
+  // errorData: IError | null;
 };
 
-const WordNotFound: React.FC<WordNotFoundProps> = ({ errorData }) => {
+const WordNotFound: React.FC<WordNotFoundProps> = () => {
+  const [error] = useGetData((state) => [state.error]);
+
   return (
     <Container>
       <SubContainer>
@@ -54,15 +57,15 @@ const WordNotFound: React.FC<WordNotFoundProps> = ({ errorData }) => {
       </SubContainer>
 
       <SubContainer>
-        <BoldText>{errorData?.title}</BoldText>
+        <BoldText>{error?.title}</BoldText>
       </SubContainer>
 
       <SubContainer>
-        <RegularText>{errorData?.message}</RegularText>
+        <RegularText>{error?.message}</RegularText>
       </SubContainer>
 
       <SubContainer>
-        <ThinText>{errorData?.resolution}</ThinText>
+        <ThinText>{error?.resolution}</ThinText>
       </SubContainer>
     </Container>
   );

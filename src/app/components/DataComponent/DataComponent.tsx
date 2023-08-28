@@ -104,13 +104,10 @@ const DataComponent: React.FC<DataComponentProps> = ({ data }) => {
   // ALL INFORMATION FROM API
   const info = data[0];
 
-  // console.log(info);
-  // console.log(data);
+  // console.log(info.phonetics[0].audio);
 
   // ZNACHENNYA
   const [...meanings] = info.meanings;
-
-  // console.log(meanings);
 
   return (
     <Container>
