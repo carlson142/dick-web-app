@@ -7,15 +7,13 @@ import { Search } from "@styled-icons/bootstrap";
 const Container = styled.div`
   position: relative;
   width: 55%;
-  /* background-color: pink; */
 `;
 
 const Input = styled.input`
-  /* width: 65rem; */
   width: 100%;
   height: 5rem;
 
-  border: 2px solid white;
+  border: 2px solid transparent;
   border-radius: 1rem;
   outline: none;
 
@@ -26,6 +24,9 @@ const Input = styled.input`
   padding: 3rem;
   font-family: inherit;
   font-size: 1.8rem;
+
+  background: var(--sBG);
+  color: inherit;
 `;
 
 const IconContainer = styled.div`

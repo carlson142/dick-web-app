@@ -1,6 +1,6 @@
 // "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -63,17 +63,22 @@ type SwitchButtonProps = {};
 
 const SwitchButton: React.FC<SwitchButtonProps> = () => {
   const [toggle, setToggle] = useState(false);
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    setToggle((prev) => !prev);
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
+  useEffect(() => {
+    document.body.setAttribute("data-theme", theme);
+  }, [theme]);
 
   return (
     <Container>
       <Label>
         <Input />
-        <Span
-          toggle={toggle}
-          onClick={() => {
-            setToggle((prev) => !prev);
-          }}
-        />
+        <Span toggle={toggle} onClick={toggleTheme} />
       </Label>
     </Container>
   );

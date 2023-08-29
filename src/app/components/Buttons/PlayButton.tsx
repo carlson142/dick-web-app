@@ -45,9 +45,9 @@ const PlayButton: React.FC<PlayButtonProps> = () => {
     .map((el) => el[0])
     .filter((el) => el && el.length > 0)[0];
 
-  console.log(ReactPlayer.canPlay(soundUrl));
+  // console.log(ReactPlayer.canPlay(soundUrl));
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <Container>
@@ -61,15 +61,6 @@ const PlayButton: React.FC<PlayButtonProps> = () => {
           light={true}
         />
       )}
-      {/* <ReactPlayer
-        url={soundUrl}
-        controls={true}
-        height={20}
-        width={20}
-        playIcon={<IconPlay />}
-        light={true}
-      /> */}
-      {/* <IconPlay /> */}
     </Container>
   );
 };
