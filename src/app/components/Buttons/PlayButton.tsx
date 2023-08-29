@@ -42,25 +42,34 @@ const PlayButton: React.FC<PlayButtonProps> = () => {
   const data: IData[] = useGetData((state) => state.data);
   const soundUrl = data
     .map((el) => el.phonetics.map((el) => el.audio))
-    .map((el) => el.join(""))
-    .filter((el) => el.length > 0)[0];
+    .map((el) => el[0])
+    .filter((el) => el && el.length > 0)[0];
 
-  // console.log(ReactPlayer.canPlay(soundUrl));
-  // console.log(soundUrl);
-  // console.log(data[0].phonetics.map((el) => el.audio).pop());
-  console.log(
-    data
-      .map((el) => el.phonetics.map((el) => el.audio))
-      .map((el) => el[0])
-      .filter((el) => el.length > 0)
-  );
+  console.log(ReactPlayer.canPlay(soundUrl));
 
-  // console.log(data);
+  console.log(data);
 
   return (
     <Container>
-      <ReactPlayer url={soundUrl} controls={true} height={20} width={20} />
-      <IconPlay />
+      {ReactPlayer.canPlay(soundUrl) && (
+        <ReactPlayer
+          url={soundUrl}
+          controls={true}
+          height={20}
+          width={20}
+          playIcon={<IconPlay />}
+          light={true}
+        />
+      )}
+      {/* <ReactPlayer
+        url={soundUrl}
+        controls={true}
+        height={20}
+        width={20}
+        playIcon={<IconPlay />}
+        light={true}
+      /> */}
+      {/* <IconPlay /> */}
     </Container>
   );
 };
